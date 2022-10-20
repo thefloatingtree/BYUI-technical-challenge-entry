@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob Perry - BYUI Technical Challenge</title>
+
+    <script type="module" src="/src/main.ts"></script>
+</head>
+
+<body>
+    <div class="test mx-12 my-24">
+
+        <section class="my-12">
+            <h1>1. Clicking this button will return all the users from the server.</h1>
+            <div class="bg-white rounded-lg drop-shadow-lg flex h-96" x-data="{ users: [] }">
+                <div class="w-full flex justify-center items-center">
+                    <button class="bg-[#2386E1] hover:bg-[#3F91E4] text-white rounded-lg px-9 py-1"
+                        @click="users = await getAllUsers()">Click</button>
+                </div>
+                <div class="w-full overflow-y-scroll">
+                    <div class="flex py-3 px-6 m-3 mb-1 bg-[#F5F6F7] rounded-lg">
+                        <p class="font-medium basis-1/6">Id</p>
+                        <p class="font-medium basis-1/4">First Name</p>
+                        <p class="font-medium basis-1/4">Last Name</p>
+                        <p class="font-medium ">Email</p>
+                    </div>
+                    <template x-for="user in users">
+                        <div class="flex py-3 px-6 mx-3 my-1 bg-[#F5F6F7] hover:bg-[#F9F8F9] rounded-lg cursor-pointer">
+                            <p class="basis-1/6 truncate" x-text="user.id"></p>
+                            <p class="basis-1/4 truncate" x-text="user.firstName"></p>
+                            <p class="basis-1/4 truncate" x-text="user.lastName"></p>
+                            <p class="truncate" x-text="user.email"></p>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-12">
+            <h1>2. Clicking this button will return all the orders from the server.</h1>
+            <div class="bg-white rounded-lg drop-shadow-lg flex h-96" x-data="{ orders: [] }">
+                <div class="w-full flex justify-center items-center">
+                    <button class="bg-[#2386E1] hover:bg-[#3F91E4] text-white rounded-lg px-9 py-1"
+                        @click="orders = await getAllOrders()">Click</button>
+                </div>
+                <div class="w-full overflow-y-scroll">
+                    <div class="flex py-3 px-6 m-3 mb-1 bg-[#F5F6F7] rounded-lg">
+                        <p class="font-medium basis-1/6">Price</p>
+                        <p class="font-medium basis-1/4">Product</p>
+                        <p class="font-medium basis-1/4">Status</p>
+                        <p class="font-medium ">UserId</p>
+                    </div>
+                    <template x-for="order in orders">
+                        <div class="flex py-3 px-6 mx-3 my-1 bg-[#F5F6F7] hover:bg-[#F9F8F9] rounded-lg cursor-pointer">
+                            <p class="basis-1/6 truncate" x-text="order.price"></p>
+                            <p class="basis-1/4 truncate" x-text="order.product"></p>
+                            <p class="basis-1/4 truncate" x-text="order.status"></p>
+                            <p class="truncate" x-text="order.userId"></p>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-12">
+            <h1>3. Clicking this button will return ONLY the orders from Jane Doe.</h1>
+            <div class="bg-white rounded-lg drop-shadow-lg flex h-96" x-data="{ orders: [] }">
+                <div class="w-full flex justify-center items-center">
+                    <button class="bg-[#2386E1] hover:bg-[#3F91E4] text-white rounded-lg px-9 py-1"
+                        @click="orders = await getOrdersFilteredByUserId(4)">Click</button>
+                </div>
+                <div class="w-full overflow-y-scroll">
+                    <div class="flex py-3 px-6 m-3 mb-1 bg-[#F5F6F7] rounded-lg">
+                        <p class="font-medium basis-1/6">Price</p>
+                        <p class="font-medium basis-1/4">Product</p>
+                        <p class="font-medium basis-1/4">Status</p>
+                        <p class="font-medium ">UserId</p>
+                    </div>
+                    <template x-for="order in orders">
+                        <div class="flex py-3 px-6 mx-3 my-1 bg-[#F5F6F7] hover:bg-[#F9F8F9] rounded-lg cursor-pointer">
+                            <p class="basis-1/6 truncate" x-text="order.price"></p>
+                            <p class="basis-1/4 truncate" x-text="order.product"></p>
+                            <p class="basis-1/4 truncate" x-text="order.status"></p>
+                            <p class="truncate" x-text="order.userId"></p>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </section>
+        
+    </div>
+</body>
+
+</html>
