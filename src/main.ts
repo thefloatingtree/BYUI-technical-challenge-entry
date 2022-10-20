@@ -24,3 +24,8 @@ export async function getOrdersFilteredByUserId(userId: number) {
     const response = await fetch(`${URL}/orders?userId=${userId}`, { headers });
     return await response.json();
 }
+
+// Add to window so Alpine can access them
+window.getAllUsers = getAllUsers
+window.getAllOrders = getAllOrders
+window.getOrdersFilteredByUserId = getOrdersFilteredByUserId
