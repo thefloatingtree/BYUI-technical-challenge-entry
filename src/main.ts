@@ -26,6 +26,6 @@ export async function getOrdersFilteredByUserId(userId: number) {
 }
 
 // Add to window so Alpine can access them
-window.getAllUsers = getAllUsers
-window.getAllOrders = getAllOrders
-window.getOrdersFilteredByUserId = getOrdersFilteredByUserId
+(window as any).getAllUsers = getAllUsers;
+(window as any).getAllOrders = getAllOrders;
+(window as any).getOrdersFilteredByUserId = getOrdersFilteredByUserId;
